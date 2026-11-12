@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8ed" />
+  <meta
+    name="description"
+    content="Ice Cream Gabin Pabi Para — gabin renyah dengan isian es krim lembut. Camilan seru untuk segala suasana."
+  />
+  <title>Pabi Para — Ice Cream Gabin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --cream: #fff8ed;
+      --pink: #f27b72;
+      --pink-dark: #df625b;
+      --brown: #422b25;
+      --muted: #78665e;
+      --yellow: #ffd76e;
+      --green: #728c68;
+      --white: #fff;
+      --shadow: 0 18px 45px rgba(66, 43, 37, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--brown);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .announcement {
+      padding: 10px 16px;
+      color: var(--brown);
+      background: var(--yellow);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 248, 237, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(66, 43, 37, 0.08);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--pink);
+      font-size: 23px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--pink-dark); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--pink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--pink-dark);
+    }
+
+    .button-outline {
+      color: var(--brown);
+      background: transparent;
+      border: 1px solid rgba(66, 43, 37, 0.2);
+    }
+
+    .button-outline:hover {
+      color: var(--brown);
+      background: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 8px;
+      border: 0;
+      color: var(--brown);
+      background: transparent;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 0 88px;
+    }
+
+    .hero::before {
+      position: absolute;
+      top: 20px;
+      right: -100px;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: #ffe8d9;
+      content: "";
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--pink-dark);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 600px;
+      margin-bottom: 20px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.06;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--pink-dark); }
+
+    .hero-copy {
+      max-width: 490px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 430px;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0 0 0 15px;
+      width: calc(100% - 15px);
+      height: 100%;
+      object-fit: cover;
+      border: 10px solid var(--white);
+      border-radius: 48% 48% 35% 35%;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -15px;
+      bottom: 30px;
+      max-width: 205px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+
+    .floating-emoji {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      display: grid;
+      width: 64px;
+      height: 64px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--yellow);
+      font-size: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    section { padding: 82px 0; }
+
+    .section-heading {
+      max-width: 620px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 12px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 46px);
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .menu-section { background: #fff; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid #f1e9e1;
+      border-radius: 22px;
+      background: var(--cream);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #f5e1d3;
+    }
+
+    .product-info { padding: 20px; }
+
+    .product-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .price {
+      color: var(--pink-dark);
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .product-info p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .order-link {
+      color: var(--pink-dark);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .why-card {
+      padding: 28px;
+      border-radius: 20px;
+      background: var(--white);
+    }
+
+    .why-icon {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 18px;
+      place-items: center;
+      border-radius: 16px;
+      background: #ffe6d9;
+      font-size: 26px;
+    }
+
+    .why-card:nth-child(2) .why-icon { background: #fff0bd; }
+    .why-card:nth-child(3) .why-icon { background: #e5eddc; }
+
+    .why-card h3 { margin-bottom: 8px; }
+
+    .why-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .story-section { background: #f7e9dc; }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .story-photo {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-copy h2 {
+      margin-bottom: 16px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.15;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .quote {
+      padding: 24px 0 0;
+      color: var(--brown) !important;
+      font-weight: 700;
+    }
+
+    .cta-section { padding: 70px 0; }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 46px;
+      border-radius: 28px;
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .cta-box h2 {
+      margin-bottom: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .cta-box p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+
+    .cta-box .button {
+      flex-shrink: 0;
+      color: var(--brown);
+      background: var(--yellow);
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(66, 43, 37, 0.1);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 18px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        right: 0;
+        left: 0;
+        display: none;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        background: var(--cream);
+        border-bottom: 1px solid rgba(66, 43, 37, 0.08);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links .button { width: 100%; }
+      .menu-toggle { display: block; }
+
+      .hero { padding: 55px 0 65px; }
+      .hero-grid, .story-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-image-wrap { min-height: 340px; }
+      .hero-image { inset: 0 12px 0 0; width: calc(100% - 12px); }
+      .floating-card { right: 0; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-image { height: 240px; }
+      .why-grid { grid-template-columns: 1fr; gap: 14px; }
+      .story-photo { height: 300px; }
+      .cta-box { align-items: flex-start; flex-direction: column; padding: 32px 26px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (min-width: 580px) and (max-width: 900px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Camilan dingin, renyah, dan bikin hari makin ceria 🍦</div>
+
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="#beranda" aria-label="Pabi Para, beranda">
+        <span class="brand-mark">🍦</span>
+        <span>Pabi Para</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="#menu">Menu</a>
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#kontak">Kontak</a>
+        <a class="button" href="https://wa.me/6281234567890?text=Halo%20Pabi%20Para%2C%20saya%20mau%20pesan">
+          Pesan Sekarang
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">✨ Camilan favorit semua suasana</div>
+          <h1>Gabin renyah,<br />isi es krim <span>lembut!</span></h1>
+          <p class="hero-copy">
+            Kenalan dengan Ice Cream Gabin Pabi Para — perpaduan gabin yang renyah
+            dan es krim dingin yang creamy. Satu gigitan, langsung bikin senyum!
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#menu">Lihat Menu <span>→</span></a>
+            <a class="button button-outline" href="https://wa.me/6281234567890?text=Halo%20Pabi%20Para">
+              Tanya lewat WhatsApp
+            </a>
+          </div>
+          <p class="hero-note">Dibuat dengan penuh cinta untuk teman ngemilmu 💛</p>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&w=1000&q=85"
+            alt="Es krim warna-warni yang menggugah selera"
+          />
+          <span class="floating-emoji" aria-hidden="true">🍪</span>
+          <div class="floating-card">
+            <strong>Renyah di luar, creamy di dalam!</strong>
+            Teman santai yang pas kapan saja.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Menu andalan kami</div>
+          <h2>Pilih rasa favoritmu</h2>
+          <p>Temukan rasa yang paling cocok untuk menemani harimu. Bisa juga pesan untuk berbagi!</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <img
+              class="product-image"
+              src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=800&q=80"
+              alt="Es krim rasa cokelat"
+              loading="lazy"
+            />
+            <div class="product-info">
+              <div class="product-title-row">
+                <h3>Gabin Cokelat</h3>
+                <span class="price">Rp8.000</span>
+              </div>
+              <p>Rasa cokelat klasik yang lembut dan selalu jadi favorit.</p>
+              <a class="order-link" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Gabin%20Cokelat">
+                Pesan rasa ini →
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              class="product-image"
+              src="https://images.unsplash.com/photo-1557142046-c704a3adf364?auto=format&fit=crop&w=800&q=80"
+              alt="Es krim rasa stroberi"
+              loading="lazy"
+            />
+            <div class="product-info">
+              <div class="product-title-row">
+                <h3>Gabin Stroberi</h3>
+                <span class="price">Rp8.000</span>
+              </div>
+              <p>Manis segar rasa stroberi, pas buat pencinta rasa buah.</p>
+              <a class="order-link" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Gabin%20Stroberi">
+                Pesan rasa ini →
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              class="product-image"
+              src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=800&q=80"
+              alt="Es krim rasa vanila"
+              loading="lazy"
+            />
+            <div class="product-info">
+              <div class="product-title-row">
+                <h3>Gabin Vanilla</h3>
+                <span class="price">Rp8.000</span>
+              </div>
+              <p>Vanilla lembut dengan rasa klasik yang bikin nagih.</p>
+              <a class="order-link" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Gabin%20Vanilla">
+                Pesan rasa ini →
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Kenapa Pabi Para?</div>
+          <h2>Ngemil jadi lebih seru</h2>
+          <p>Perpaduan sederhana yang dibuat untuk menghadirkan momen kecil yang menyenangkan.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-icon">🍪</div>
+            <h3>Gabin renyah</h3>
+            <p>Tekstur renyah berpadu dengan isian dingin yang lembut di setiap gigitan.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-icon">💛</div>
+            <h3>Dibuat dengan cinta</h3>
+            <p>Disiapkan dengan perhatian supaya camilanmu terasa istimewa.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-icon">🎉</div>
+            <h3>Cocok untuk berbagi</h3>
+            <p>Teman santai, kumpul keluarga, atau ide camilan untuk acara kecilmu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="tentang">
+      <div class="container story-grid">
+        <img
+          class="story-photo"
+          src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=85"
+          alt="Aneka es krim untuk dinikmati bersama"
+          loading="lazy"
+        />
+        <div class="story-copy">
+          <div class="eyebrow">Cerita Pabi Para</div>
+          <h2>Camilan sederhana, bahagianya luar biasa.</h2>
+          <p>
+            Pabi Para hadir dengan ide sederhana: menyatukan gabin renyah dan
+            es krim lembut menjadi camilan yang seru dan mudah dinikmati.
+            Kami ingin setiap gigitan membawa suasana ceria untukmu dan orang-orang tersayang.
+          </p>
+          <p class="quote">“Dingin es krimnya, renyah gabinnya, seru momennya!”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="kontak">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Siap ngemil yang seru?</h2>
+            <p>Hubungi kami untuk tanya menu, pemesanan, dan ketersediaan produk.</p>
+          </div>
+          <a
+            class="button"
+            href="https://wa.me/6281234567890?text=Halo%20Pabi%20Para%2C%20saya%20mau%20pesan"
+          >
+            💬 Pesan via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <a class="brand" href="#beranda">
+        <span class="brand-mark">🍦</span>
+        <span>Pabi Para</span>
+      </a>
+      <span>© 2026 Pabi Para. Dibuat dengan 💛</span>
+      <div class="social-links">
+        <a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://wa.me/6281234567890">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script>
+</body>
+</html>
